@@ -67,8 +67,8 @@ foreach( $t_paths as $t_path_config_name => $t_path ) {
 
 foreach( $t_paths as $t_path_config_name => $t_path ) {
 	check_print_test_row(
-		$t_path_config_name . ' configuration option points to a valid directory',
-		is_dir( $t_path['config_value'] ),
+		$t_path_config_name . ' configuration option points to a valid and accessible directory',
+		is_dir( $t_path['config_value'] ) && is_readable( $t_path['config_value'] ),
 		array( false => 'The path specified by the ' . $t_path_config_name . ' configuration option does not point to a valid and accessible directory.' )
 	);
 }
