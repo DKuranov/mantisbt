@@ -61,7 +61,7 @@ foreach( $t_paths as $t_path_config_name => $t_path ) {
 	check_print_test_row(
 		$t_path_config_name . ' configuration option has a trailing directory separator',
 		substr( $t_path['config_value'], -1, 1 ) == DIRECTORY_SEPARATOR,
-		array( false => 'You must provide a trailing directory separator (' . DIRECTORY_SEPARATOR . ') to the end of the ' . $t_path_config_name . ' configuration value.' )
+		array( false => 'You must provide a trailing directory separator (' . DIRECTORY_SEPARATOR . ") to the end of '" . $t_path['config_value'] . "'." )
 	);
 }
 
@@ -69,7 +69,7 @@ foreach( $t_paths as $t_path_config_name => $t_path ) {
 	check_print_test_row(
 		$t_path_config_name . ' configuration option points to a valid and accessible directory',
 		is_dir( $t_path['config_value'] ) && is_readable( $t_path['config_value'] ),
-		array( false => 'The path specified by the ' . $t_path_config_name . ' configuration option does not point to a valid and accessible directory.' )
+		array( false => "The path '" . $t_path['config_value'] . "' is not a valid and accessible directory." )
 	);
 }
 
@@ -80,7 +80,7 @@ if( DISK == config_get_global( 'file_upload_method' ) ) {
 	check_print_test_row(
 		$t_path_config_name . ' configuration option points to a writable directory',
 		is_writable( $t_path['config_value'] ),
-		array( false => "The path specified by the $t_path_config_name configuration option ('" . $t_path['config_value'] . "') must be writable." )
+		array( false => "The path '" . $t_path['config_value'] . "' must be writable." )
 	);
 }
 
